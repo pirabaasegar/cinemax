@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+
+:target {
+    scroll-margin-top: 60px;
+}
+
+.font-display {
+    font-family: 'Outfit', ui-sans-serif, system-ui;
+}
+
+.page-container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.page-content {
+    flex: 1;
+}
+
+.disabled {
+    cursor: not-allowed;
+    color: grey;
+}

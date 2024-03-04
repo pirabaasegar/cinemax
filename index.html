@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html class="scroll-smooth">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="images/favicon.ico">
+  <meta name="description" content="" />
+  <meta property="og:description" content="" />
+  <meta property="og:image" content="images/og" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <title>Cinemax</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script defer src="main.js"></script>
+</head>
+
+<body class="font-display ">
+  <div class="page-container">
+    <nav class="fixed inset-x-0 top-0 z-40 w-full relative inset-x-auto bottom-auto ">
+      <div class="container mx-auto my-12">
+        <div class="mx-auto flex flex-row items-center justify-between px-4 py-6 max-w-screen-xl p-0">
+          <div class="flex flex-row items-center space-x-12 hidden md:flex">
+            <h1 class="font-bold text-3xl">Cinemax</h1>
+          </div>
+          <div
+            class="relative flex h-16 w-full flex-row items-center justify-around rounded-lg border border-gray-200 bg-white font-medium text-gray-900 shadow-md h-auto max-w-max justify-items-start space-x-12 border-none bg-transparent py-4 shadow-none">
+            <form class="flex items-center" id="form">
+              <div class="relative w-full">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                </div>
+                <input type="text" id="search"
+                  class="bg-gray-100 placeholder:text-black text-sm rounded-lg block pl-10 p-2.5 w-96 focus: outline-0"
+                  placeholder="Search" autocomplete="off" required>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <nav class="bg-black">
+        <div class="p-4">
+          <div class="flex justify-center">
+            <ul class="flex flex-row mt-0 mr-6 space-x-8 text-sm font-medium">
+              <li><a href="#" class="text-white text-base" id="movies">Movies</a></li>
+              <li><a href="#" class="text-white text-base" id="tv">TV Shows </a></li>
+              <li><a href="#" class="text-white text-base" id="peoples">People</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </nav>
+    <main class="page-content pt-24 md:pt-0" id="main">
+      <div id="controls-carousel" class="relative mx-32 mt-20" data-carousel="static">
+        <div id="carousel-items"></div>
+        <button type="button"
+          class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-28 cursor-pointer group focus:outline-none"
+          data-carousel-prev>
+          <span
+            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-black">
+            <svg aria-hidden="true" class="w-6 h-6 text-white" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </span>
+        </button>
+        <button type="button"
+          class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-28 cursor-pointer group focus:outline-none"
+          data-carousel-next>
+          <span
+            class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-black">
+            <svg aria-hidden="true" class="w-6 h-6 text-white" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </span>
+        </button>
+      </div>
+      <div class="mt-20">
+        <div class="border-b-2 border-solid border-gray mx-32 flex">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="29" fill="currentColor" class="bi bi-film"
+            viewBox="0 0 16 16">
+            <path
+              d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z" />
+          </svg>
+          <h2 class="font-bold text-xl mb-2 pl-2">Popular Movies</h2>
+        </div>
+        <div class="flex flex-wrap justify-center" id="popular-movies"></div>
+      </div>
+      <div class="mt-8">
+        <div class="border-b-2 border-solid border-gray mx-32 flex">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="29" fill="currentColor" class="bi bi-tv"
+            viewBox="0 0 16 16">
+            <path
+              d="M2.5 13.5A.5.5 0 0 1 3 13h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zM13.991 3l.024.001a1.46 1.46 0 0 1 .538.143.757.757 0 0 1 .302.254c.067.1.145.277.145.602v5.991l-.001.024a1.464 1.464 0 0 1-.143.538.758.758 0 0 1-.254.302c-.1.067-.277.145-.602.145H2.009l-.024-.001a1.464 1.464 0 0 1-.538-.143.758.758 0 0 1-.302-.254C1.078 10.502 1 10.325 1 10V4.009l.001-.024a1.46 1.46 0 0 1 .143-.538.758.758 0 0 1 .254-.302C1.498 3.078 1.675 3 2 3h11.991zM14 2H2C0 2 0 4 0 4v6c0 2 2 2 2 2h12c2 0 2-2 2-2V4c0-2-2-2-2-2z" />
+          </svg>
+          <h2 class="font-bold text-xl mb-2 pl-2">Popular TV Shows</h2>
+        </div>
+        <div class="flex flex-wrap justify-center" id="popular-tv"></div>
+      </div>
+      <div class="mt-8 mb-20">
+        <div class="border-b-2 border-solid border-gray mx-32 flex">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="29" fill="currentColor" class="bi bi-people"
+            viewBox="0 0 16 16">
+            <path
+              d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" />
+          </svg>
+          <h2 class="font-bold text-xl mb-2 pl-2">Popular People</h2>
+        </div>
+        <div class="flex flex-wrap justify-center" id="popular-people"></div>
+      </div>
+    </main>
+    <button id="top-button"
+      class="hidden fixed bottom-8 right-11 text-xl border-0 outline-0 bg-black text-white cursor-pointer p-3.5 rounded-full font-bold ease-in-out shadow-md">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z" />
+      </svg>
+    </button>
+  </div>
+</body>
+
+</html>
