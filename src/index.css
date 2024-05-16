@@ -571,18 +571,6 @@ main {
     color: #acacac;
 }
 
-.hero-text a {
-    color: #fff !important;
-    transition: all .2s ease-in-out;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #fff;
-}
-
-.hero-text a:hover {
-    color: #fff !important;
-    border-bottom: 2px solid #fff;
-}
-
 .footer {
     padding: 0 0 40px;
     font-size: 14px;
@@ -681,11 +669,7 @@ main {
     }
 
     .hero {
-        margin: 25px 50px;
-    }
-
-    .hero-text {
-        padding: 0 20px;
+        display: none;
     }
 
     .carousel-control-prev,
@@ -702,9 +686,6 @@ main {
         height: 280px;
         right: 49px;
     }
-    .non-hero-page-main {
-        margin: 90px 0;
-    }
     .poster {
         width: 100%;
         height: 100%;
@@ -716,26 +697,5 @@ main {
     .form-select {
         margin: auto;
         width: 220.98px !important;
-    }
-}
-
-@media only screen and (max-width:768px) {
-    .hero-text h1 {
-        font-size: 3rem
-    }
-
-    .hero-text h4 {
-        font-size: 1.2rem
-    }
-}
-
-@media only screen and (max-width:480px) {
-    .hero-text h1 {
-        font-size: 2.5rem;
-        width: 20rem
-    }
-
-    .hero-text h4 {
-        font-size: 1rem
     }
 }
