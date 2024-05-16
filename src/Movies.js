@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/header';
+import Footer from './components/footer';
 import Pagination from './components/pagination';
 import MovieDetail from './components/movie';
 import Genre, { useGenre } from './components/genre';
@@ -81,6 +82,7 @@ function App() {
                     </div>
                 )}
             </div>
+            <Footer />
         </>
     );
 }

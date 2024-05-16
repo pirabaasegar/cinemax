@@ -38,17 +38,17 @@ const Header = () => {
         <nav id="navbar" className="navbar order-last order-lg-0 p-0">
           <ul>
             <li>
-              <NavLink exact to="/" activeClassName="active">
+              <NavLink exact="true" to="/" activeclassname="active">
                 Trending
               </NavLink>
             </li>
             <li>
-              <NavLink to="/movies" activeClassName="active">
+              <NavLink to="/movies" activeclassname="active">
                 Movies
               </NavLink>
             </li>
             <li>
-              <NavLink to="/tv" activeClassName="active">
+              <NavLink to="/tv" activeclassname="active">
                 TV Shows
               </NavLink>
             </li>
