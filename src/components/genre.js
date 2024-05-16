@@ -42,8 +42,8 @@ const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
   return (
     <>
       <div className="container-fluid">
-        <div className="row justify-content-end">
-          <div className="col-auto">
+        <div className="row justify-content-lg-end">
+          <div className="col col-lg-auto p-0">
             <select
               className="form-select"
               value={selectedGenre ? selectedGenre.id : ""}

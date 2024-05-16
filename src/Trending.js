@@ -125,7 +125,7 @@ function App() {
         {selectedMovie ? (
           <MovieDetail id={selectedMovie} />
         ) : (
-          <div className="row py-5 row-gap-5">
+          <div className="row py-5 row-gap-5 justify-content-center justify-content-md-start">
             {state.map((Val) => {
               const { name, title, poster_path, first_air_date, release_date, vote_average, id } = Val;
               const roundedVoteAverage = Math.round(vote_average * 10) / 10;

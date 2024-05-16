@@ -47,7 +47,7 @@ const Search = () => {
             <div className="container">
                 {content.length === 0 && <p className='results'>No results found.</p>}
                 {content.length > 0 && (
-                    <div className="row py-5 row-gap-5">
+          <div className="row py-5 row-gap-5 justify-content-center justify-content-md-start">
                         {content.map((item) => {
                             const {
                                 name,

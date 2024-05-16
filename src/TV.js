@@ -45,7 +45,7 @@ function App() {
                 {selectedTVShow ? (
                     <TVShowDetail id={selectedTVShow} />
                 ) : (
-                    <div className="row py-5 row-gap-4">
+                    <div className="row py-5 row-gap-5 justify-content-center justify-content-md-start">
                         <Genre
                             genre={genre}
                             setGenre={setGenre}
