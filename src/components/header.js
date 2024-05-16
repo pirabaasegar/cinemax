@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
   const [searchText, setSearchText] = useState("");
+  const [mobileNavVisible, setMobileNavVisible] = useState(false);
 
   const handleSearchInputChange = (event) => {
     setSearchText(event.target.value);
@@ -12,6 +13,10 @@ const Header = () => {
     event.preventDefault();
     if (searchText.trim() === "") return;
     window.location.href = `/search?query=${encodeURIComponent(searchText)}`;
+  };
+
+  const toggleMobileNav = () => {
+    setMobileNavVisible(!mobileNavVisible);
   };
 
   return (
@@ -54,7 +59,10 @@ const Header = () => {
             </li>
           </ul>
           <i className="bi bi-search mobile-search-toggle" />
-          <i className="bi bi-list mobile-nav-toggle" />
+          <i
+            className={`mobile-nav-toggle ${mobileNavVisible ? 'bi-x' : 'bi-list'}`}
+            onClick={toggleMobileNav}
+          />
         </nav>
         <div id="mobile-search" className="mobile-search-container">
           <input
@@ -72,7 +80,7 @@ const Header = () => {
             <i className="bi bi-search" />
           </button>
         </div>
-        <nav id="mobile-nav" className="mobile-nav">
+        <nav id="mobile-nav" className={`mobile-nav ${mobileNavVisible ? 'mobile-nav-show' : ''}`}>
           <ul>
             <li>
               <NavLink to="/" className="active">
@@ -90,11 +98,6 @@ const Header = () => {
               </NavLink>
             </li>
           </ul>
-          <div className="row">
-            <span className="text-center">
-              © <a href="/">Cinemax</a>. All Rights Reserved.
-            </span>
-          </div>
         </nav>
       </div>
     </header>
