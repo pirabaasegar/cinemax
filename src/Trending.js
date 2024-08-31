@@ -74,7 +74,13 @@ function App() {
     <>
       <Header />
       {heroData && (
-        <div className="hero" style={heroBackgroundStyle}>
+        <div
+          className="hero"
+          style={{
+            ...heroBackgroundStyle,
+            display: selectedMovie ? 'none' : 'block', // Hide hero when a movie/TV show is selected
+          }}
+        >
           <div className="hero-text aos-init aos-animate" data-aos="fade-up">
             <div className="row">
               <div className="col-auto d-flex align-items-center">
@@ -123,7 +129,10 @@ function App() {
       )}
       <div className="container">
         {selectedMovie ? (
-          <MovieDetail id={selectedMovie} />
+          <>
+            <MovieDetail id={selectedMovie} />
+            <TVShowDetail id={selectedMovie} />
+          </>
         ) : (
           <div className="row py-5 row-gap-4 row-gap-lg-5 justify-content-center justify-content-md-start">
             {state.map((Val) => {
@@ -145,9 +154,6 @@ function App() {
             })}
             <Pagination page={page} setPage={setPage} />
           </div>
-        )}
-        {selectedMovie && (
-          <TVShowDetail id={selectedMovie} />
         )}
       </div>
       <Footer />
