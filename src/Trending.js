@@ -78,7 +78,7 @@ function App() {
           className="hero"
           style={{
             ...heroBackgroundStyle,
-            display: selectedMovie ? 'none' : 'block', // Hide hero when a movie/TV show is selected
+             // Hide hero when a movie/TV show is selected
           }}
         >
           <div className="hero-text aos-init aos-animate" data-aos="fade-up">
