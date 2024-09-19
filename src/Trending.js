@@ -144,6 +144,7 @@ function App() {
                 </div>
               </div>
             );
+            document.title = "Cinemax - Discover Movies and TV Shows all in one place!";
           })}
           <Pagination page={page} setPage={setPage} />
         </div>

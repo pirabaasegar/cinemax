@@ -77,7 +77,7 @@ function TVShowDetail() {
             </div>
           </div>
         );
-        document.title = showDataJson.name + " - TV Show Details";
+        document.title = showDataJson.name + " - Cinemax";
       } catch (error) {
         console.error('Error fetching TV show details:', error);
       }
