@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-function TVShowDetailPage() {
+function TVShowDetail() {
   const { id } = useParams();
   const [showDetails, setShowDetails] = useState(null);
 
