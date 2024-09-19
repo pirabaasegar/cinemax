@@ -93,7 +93,7 @@ function MovieDetail() {
     fetchMovieDetails();
   }, [id]);
 
-  return <div id="movie-details">{movieDetails}</div>;
+  return <div className='container'><div id="movie-details">{movieDetails}</div></div>;
 }
 
 export default MovieDetail;
