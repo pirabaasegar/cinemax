@@ -11,6 +11,7 @@ function App() {
     const [page, setPage] = useState(1);
     const [genre, setGenre] = useState([]);
     const [value, setValue] = useState([]);
+    const [selectedTVShow, setSelectedTVShow] = useState(null); // Add this line
     const genreURL = useGenre(value);
     const navigate = useNavigate();
 
@@ -25,6 +26,7 @@ function App() {
     }, [page, genreURL]);
 
     const handleTVShowClick = (id) => {
+        setSelectedTVShow(id); // Add this line
         navigate(`/tv/${id}`);
     };
 
@@ -43,8 +45,8 @@ function App() {
         <>
             <Header />
             <div className="container">
-                {selectedTVShow ? (
-                    <TVShowDetail id={selectedTVShow} />
+                {selectedTVShow ? ( // Update this line
+                    <TVShowDetail id={selectedTVShow} /> // Update this line
                 ) : (
                     <div className="row py-5 row-gap-5 justify-content-center justify-content-md-start">
                         <Genre
