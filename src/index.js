@@ -7,7 +7,7 @@ import Trending from './Trending';
 import Movies from './Movies';
 import TV from './TV';
 import Search from './Search';
-import MovieDetail from './MovieDetail';  // Import your movie detail component
+import MovieDetail from './components/movie';  // Import your movie detail component
 
 import 'bootstrap/dist/css/bootstrap.css';  
 import 'bootstrap-icons/font/bootstrap-icons.css';
