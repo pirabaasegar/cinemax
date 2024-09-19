@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Pagination from './components/pagination';
 
 function App() {
@@ -84,7 +84,11 @@ function App() {
                 />
               </div>
               <div className="col content">
-                <h1>{heroData.title || heroData.name}</h1>
+                <h1>
+                  <Link to={`/${heroData.media_type}/${heroData.id}`} className="hero-link">
+                    {heroData.title || heroData.name}
+                  </Link>
+                </h1>
                 <ul className="genre">
                   {heroData.genres.map(genre => (
                     <li key={genre.id}>{genre.name}</li>
