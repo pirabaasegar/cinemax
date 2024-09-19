@@ -9,8 +9,8 @@ import TV from './TV';
 import Search from './Search';
 import MovieDetail from './components/movie';
 import TVShowDetail from './components/show';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/header';
+import Footer from './components/footer';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
