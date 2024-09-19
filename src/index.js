@@ -20,7 +20,7 @@ const root = createRoot(container);
 
 root.render(
   <BrowserRouter>
-    <Header /> {/* Add Header component */}
+    <Header />
     <Routes>
       <Route path="/" element={<Trending />} />
       <Route path="/movies" element={<Movies />} />
@@ -29,6 +29,6 @@ root.render(
       <Route path="/movies/:id" element={<MovieDetail />} />
       <Route path="/tv/:id" element={<TVShowDetail />} />
     </Routes>
-    <Footer /> {/* Add Footer component */}
+    <Footer />
   </BrowserRouter>
 );
