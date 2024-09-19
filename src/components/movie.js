@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 
-function MovieDetail() {
-  const { id } = useParams(); // Extract the id from the URL
+function MovieDetail({ id }) {
   const [movieDetails, setMovieDetails] = useState(null);
 
   useEffect(() => {
@@ -23,15 +21,15 @@ function MovieDetail() {
         const hours = Math.floor(movieDataJson.runtime / 60);
         const minutes = movieDataJson.runtime % 60;
         const runtimeFormatted = `${hours}h ${minutes}m`;
-        const genres = movieDataJson.genres ? movieDataJson.genres.map(genre => `<li>${genre.name}</li>`).join('') : 'N/A';
+        const genres = movieDataJson.genres.map(genre => `<li>${genre.name}</li>`).join('');
         const releaseYear = movieDataJson.release_date ? new Date(movieDataJson.release_date).getFullYear() : 'N/A';
 
         document.querySelector('meta[name="description"]').setAttribute('content', movieDataJson.overview);
 
-        const trailerKey = movieDataJson.videos?.results?.length > 0 ? movieDataJson.videos.results[0].key : null;
+        const trailerKey = movieDataJson.videos.results[0].key;
         const director = creditsDataJson.crew.find(person => person.job === 'Director');
         const writer = creditsDataJson.crew.find(person => person.department === 'Writing');
-        const certification = releaseDataJson.results?.find(country => country.iso_3166_1 === 'US')?.release_dates[0]?.certification || 'N/A';
+        const certification = releaseDataJson.results.find(country => country.iso_3166_1 === 'US').release_dates[0].certification;
 
         const cast = creditsDataJson.cast.slice(0, 12).map(member => (
           <div className="col-8 col-md-2" key={member.id}>
@@ -52,13 +50,13 @@ function MovieDetail() {
               </div>
               <div className="col content">
                 <h1>{movieDataJson.title || 'N/A'}</h1>
-                <ul className="genre" dangerouslySetInnerHTML={{ __html: genres }}></ul><br />
+                <ul className="genre" dangerouslySetInnerHTML={{ __html: genres || 'N/A' }}></ul><br />
                 <ul className="info">
                   <li>{releaseYear}</li>
-                  <li>{certification}</li>
+                  <li>{certification || 'N/A'}</li>
                   <li>{runtimeFormatted || 'N/A'}</li>
                 </ul><br />
-                {trailerKey && <a href={`https://www.youtube.com/watch?v=${trailerKey}`} className="trailer"><i className="bi bi-play-fill"></i>Watch Trailer</a>}
+                <a href={`https://www.youtube.com/watch?v=${trailerKey}`} className="trailer"><i className="bi bi-play-fill"></i>Watch Trailer</a>
                 <h3 className="mt-4" style={{ fontSize: '1.3em' }}>Overview</h3>
                 <p>{movieDataJson.overview || 'N/A'}</p>
                 <div className="row mt-4">
