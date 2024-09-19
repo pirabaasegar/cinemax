@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import Header from './header';
-import Footer from './footer';
 
-function MovieDetail() {
-  const { id } = useParams();
+function MovieDetail({ id }) {
   const [movieDetails, setMovieDetails] = useState(null);
 
   useEffect(() => {
@@ -95,15 +91,7 @@ function MovieDetail() {
     fetchMovieDetails();
   }, [id]);
 
-  return (
-    <>
-      <Header />
-      <div className="container">
-        <div id="movie-details">{movieDetails}</div>
-      </div>
-      <Footer />
-    </>
-  );
+  return <div id="movie-details">{movieDetails}</div>;
 }
 
 export default MovieDetail;

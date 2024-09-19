@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import Header from './components/header';
 import Footer from './components/footer';
 import Pagination from './components/pagination';
+import MovieDetail from './components/movie';
+import TVShowDetail from './components/show';
 
-function Trending() {
+function App() {
   const [state, setState] = useState([]);
   const [page, setPage] = useState(1);
+  const [selectedMovie, setSelectedMovie] = useState(null);
   const [heroData, setHeroData] = useState(null);
-  const navigate = useNavigate();
 
   const fetchTrending = async () => {
     const trendingData = await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=3d820eab8fd533d2fd7e1514e86292ea&page=${page}`);
@@ -50,8 +51,8 @@ function Trending() {
     fetchTrending();
   }, [page]);
 
-  const handleCardClick = (id, mediaType) => {
-    navigate(`/${mediaType}/${id}`);
+  const handleCardClick = (id) => {
+    setSelectedMovie(id);
   };
 
   const formatDate = (dateString) => {
@@ -127,30 +128,37 @@ function Trending() {
         </div>
       )}
       <div className="container">
-        <div className="row py-5 row-gap-4 row-gap-lg-5 justify-content-center justify-content-md-start">
-          {state.map((Val) => {
-            const { name, title, poster_path, first_air_date, release_date, vote_average, id, media_type } = Val;
-            const roundedVoteAverage = Math.round(vote_average * 10) / 10;
-            const formattedDate = first_air_date ? formatDate(first_air_date) : formatDate(release_date);
-            return (
-              <div className="col-8 col-md-2" key={id} onClick={() => handleCardClick(id, media_type)}>
-                <div className="card">
-                  <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} className="card-img-top" alt={title} draggable="false" />
-                  <div className="card-body">
-                    <div className={`rating ${getColor(vote_average)}`}>{roundedVoteAverage}</div>
-                    <h5 className="card-title">{title || name}</h5>
-                    <p className="card-text">{formattedDate}</p>
+        {selectedMovie ? (
+          <>
+            <MovieDetail id={selectedMovie} />
+            <TVShowDetail id={selectedMovie} />
+          </>
+        ) : (
+          <div className="row py-5 row-gap-4 row-gap-lg-5 justify-content-center justify-content-md-start">
+            {state.map((Val) => {
+              const { name, title, poster_path, first_air_date, release_date, vote_average, id } = Val;
+              const roundedVoteAverage = Math.round(vote_average * 10) / 10;
+              const formattedDate = first_air_date ? formatDate(first_air_date) : formatDate(release_date);
+              return (
+                <div className="col-8 col-md-2" key={id} onClick={() => handleCardClick(id)}>
+                  <div className="card">
+                    <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} className="card-img-top" alt={title} draggable="false" />
+                    <div className="card-body">
+                      <div className={`rating ${getColor(vote_average)}`}>{roundedVoteAverage}</div>
+                      <h5 className="card-title">{title || name}</h5>
+                      <p className="card-text">{formattedDate}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-          <Pagination page={page} setPage={setPage} />
-        </div>
+              );
+            })}
+            <Pagination page={page} setPage={setPage} />
+          </div>
+        )}
       </div>
       <Footer />
     </>
   );
 }
 
-export default Trending;
+export default App;
