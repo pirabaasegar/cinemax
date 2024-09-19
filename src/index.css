@@ -551,10 +551,11 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: #fff;
+
 }
 
 .hero-text h1 {
-    color: #1f2937;
     line-height: 1.1;
 }
 
