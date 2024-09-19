@@ -29,7 +29,7 @@ function MovieDetail({ id }) {
         const trailerKey = movieDataJson.videos?.results?.length > 0 ? movieDataJson.videos.results[0].key : null;
         const director = creditsDataJson.crew.find(person => person.job === 'Director');
         const writer = creditsDataJson.crew.find(person => person.department === 'Writing');
-        const certification = releaseDataJson.results.find(country => country.iso_3166_1 === 'US')?.release_dates[0]?.certification || 'N/A';
+        const certification = releaseDataJson.results?.find(country => country.iso_3166_1 === 'US')?.release_dates[0]?.certification || 'N/A';
 
         const cast = creditsDataJson.cast.slice(0, 12).map(member => (
           <div className="col-8 col-md-2" key={member.id}>
