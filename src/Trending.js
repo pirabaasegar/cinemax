@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import Header from './components/header';
 import Footer from './components/footer';
 import Pagination from './components/pagination';
@@ -8,9 +9,10 @@ import TVShowDetail from './components/show';
 function App() {
   const [state, setState] = useState([]);
   const [page, setPage] = useState(1);
-  const [selectedMovie, setSelectedMovie] = useState(null);
   const [heroData, setHeroData] = useState(null);
+  const navigate = useNavigate();
 
+  // Fetch trending movies and shows
   const fetchTrending = async () => {
     const trendingData = await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=3d820eab8fd533d2fd7e1514e86292ea&page=${page}`);
     const trendingJson = await trendingData.json();
@@ -19,6 +21,8 @@ function App() {
     const firstItem = trendingJson.results[0];
     const heroId = firstItem.id;
     const mediaType = firstItem.media_type === 'tv' ? 'tv' : 'movie';
+    
+    // Fetch hero details, credits, and release data
     const [heroDataResponse, creditsResponse, releaseDataResponse] = await Promise.all([
       fetch(`https://api.themoviedb.org/3/${mediaType}/${heroId}?api_key=3d820eab8fd533d2fd7e1514e86292ea`),
       fetch(`https://api.themoviedb.org/3/${mediaType}/${heroId}/credits?api_key=3d820eab8fd533d2fd7e1514e86292ea`),
@@ -51,21 +55,26 @@ function App() {
     fetchTrending();
   }, [page]);
 
-  const handleCardClick = (id) => {
-    setSelectedMovie(id);
+  // Handle clicking on a movie or show card
+  const handleCardClick = (id, title) => {
+    const movieSlug = title.toLowerCase().split(' ').join('-');
+    navigate(`/movie/${movieSlug}`);
   };
 
+  // Format the date for display
   const formatDate = (dateString) => {
     const options = { month: "short", day: "numeric", year: "numeric" };
     return new Date(dateString).toLocaleDateString("en-US", options);
   };
 
+  // Set color based on vote average
   const getColor = (voteAverage) => {
     if (voteAverage >= 8) return "green";
     if (voteAverage >= 6) return "orange";
     return "red";
   };
 
+  // Set hero background image style
   const heroBackgroundStyle = {
     backgroundImage: heroData ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original/${heroData.backdrop_path})` : ''
   };
@@ -73,12 +82,12 @@ function App() {
   return (
     <>
       <Header />
+      {/* Hero Section */}
       {heroData && (
         <div
           className="hero"
           style={{
-            ...heroBackgroundStyle,
-             // Hide hero when a movie/TV show is selected
+            ...heroBackgroundStyle
           }}
         >
           <div className="hero-text aos-init aos-animate" data-aos="fade-up">
@@ -128,33 +137,28 @@ function App() {
         </div>
       )}
       <div className="container">
-        {selectedMovie ? (
-          <>
-            <MovieDetail id={selectedMovie} />
-            <TVShowDetail id={selectedMovie} />
-          </>
-        ) : (
-          <div className="row py-5 row-gap-4 row-gap-lg-5 justify-content-center justify-content-md-start">
-            {state.map((Val) => {
-              const { name, title, poster_path, first_air_date, release_date, vote_average, id } = Val;
-              const roundedVoteAverage = Math.round(vote_average * 10) / 10;
-              const formattedDate = first_air_date ? formatDate(first_air_date) : formatDate(release_date);
-              return (
-                <div className="col-8 col-md-2" key={id} onClick={() => handleCardClick(id)}>
-                  <div className="card">
-                    <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} className="card-img-top" alt={title} draggable="false" />
-                    <div className="card-body">
-                      <div className={`rating ${getColor(vote_average)}`}>{roundedVoteAverage}</div>
-                      <h5 className="card-title">{title || name}</h5>
-                      <p className="card-text">{formattedDate}</p>
-                    </div>
+        {/* Movie and TV Show Cards */}
+        <div className="row py-5 row-gap-4 row-gap-lg-5 justify-content-center justify-content-md-start">
+          {state.map((Val) => {
+            const { name, title, poster_path, first_air_date, release_date, vote_average, id } = Val;
+            const roundedVoteAverage = Math.round(vote_average * 10) / 10;
+            const formattedDate = first_air_date ? formatDate(first_air_date) : formatDate(release_date);
+            return (
+              <div className="col-8 col-md-2" key={id} onClick={() => handleCardClick(id, title || name)}>
+                <div className="card">
+                  <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} className="card-img-top" alt={title} draggable="false" />
+                  <div className="card-body">
+                    <div className={`rating ${getColor(vote_average)}`}>{roundedVoteAverage}</div>
+                    <h5 className="card-title">{title || name}</h5>
+                    <p className="card-text">{formattedDate}</p>
                   </div>
                 </div>
-              );
-            })}
-            <Pagination page={page} setPage={setPage} />
-          </div>
-        )}
+              </div>
+            );
+          })}
+          {/* Pagination Component */}
+          <Pagination page={page} setPage={setPage} />
+        </div>
       </div>
       <Footer />
     </>
