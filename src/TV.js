@@ -4,14 +4,12 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Pagination from './components/pagination';
 import Genre, { useGenre } from './components/genre';
-import TVShowDetail from './components/show';
 
 function App() {
     const [state, setState] = useState([]);
     const [page, setPage] = useState(1);
     const [genre, setGenre] = useState([]);
     const [value, setValue] = useState([]);
-    const [selectedTVShow, setSelectedTVShow] = useState(null); // Add this line
     const genreURL = useGenre(value);
     const navigate = useNavigate();
 
@@ -26,7 +24,6 @@ function App() {
     }, [page, genreURL]);
 
     const handleTVShowClick = (id) => {
-        setSelectedTVShow(id); // Add this line
         navigate(`/tv/${id}`);
     };
 
@@ -45,45 +42,41 @@ function App() {
         <>
             <Header />
             <div className="container">
-                {selectedTVShow ? ( // Update this line
-                    <TVShowDetail id={selectedTVShow} /> // Update this line
-                ) : (
-                    <div className="row py-5 row-gap-5 justify-content-center justify-content-md-start">
-                        <Genre
-                            genre={genre}
-                            setGenre={setGenre}
-                            setPage={setPage}
-                            type="tv"
-                            value={value}
-                            setValue={setValue}
-                        />
-                        {state.map((tvShow) => {
-                            const {
-                                name,
-                                poster_path,
-                                first_air_date,
-                                vote_average,
-                                id,
-                            } = tvShow;
-                            const roundedVoteAverage = Math.round(vote_average * 10) / 10;
-                            const ratingColor = getColor(vote_average);
-                            const formattedDate = formatDate(first_air_date);
-                            return (
-                                <div className="col-8 col-md-2" key={id} onClick={() => handleTVShowClick(id)}>
-                                    <div className="card">
-                                        <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} className="card-img-top" alt={name} draggable="false" />
-                                        <div className="card-body">
-                                            <div className={`rating ${ratingColor}`}>{roundedVoteAverage}</div>
-                                            <h5 className="card-title">{name}</h5>
-                                            <p className="card-text">{formattedDate}</p>
-                                        </div>
+                <div className="row py-5 row-gap-5 justify-content-center justify-content-md-start">
+                    <Genre
+                        genre={genre}
+                        setGenre={setGenre}
+                        setPage={setPage}
+                        type="tv"
+                        value={value}
+                        setValue={setValue}
+                    />
+                    {state.map((tvShow) => {
+                        const {
+                            name,
+                            poster_path,
+                            first_air_date,
+                            vote_average,
+                            id,
+                        } = tvShow;
+                        const roundedVoteAverage = Math.round(vote_average * 10) / 10;
+                        const ratingColor = getColor(vote_average);
+                        const formattedDate = formatDate(first_air_date);
+                        return (
+                            <div className="col-8 col-md-2" key={id} onClick={() => handleTVShowClick(id)}>
+                                <div className="card">
+                                    <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} className="card-img-top" alt={name} draggable="false" />
+                                    <div className="card-body">
+                                        <div className={`rating ${ratingColor}`}>{roundedVoteAverage}</div>
+                                        <h5 className="card-title">{name}</h5>
+                                        <p className="card-text">{formattedDate}</p>
                                     </div>
                                 </div>
-                            );
-                        })}
-                        <Pagination page={page} setPage={setPage} />
-                    </div>
-                )}
+                            </div>
+                        );
+                    })}
+                    <Pagination page={page} setPage={setPage} />
+                </div>
             </div>
             <Footer />
         </>
