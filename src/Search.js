@@ -43,7 +43,6 @@ const Search = () => {
 
     return (
         <>
-            <Header />
             <div className="container">
                 {content.length === 0 && <p className='results'>No results found.</p>}
                 {content.length > 0 && (
@@ -89,7 +88,6 @@ const Search = () => {
                     </div>
                 )}
             </div>
-            <Footer />
         </>
     );
 };
