@@ -132,7 +132,6 @@ ol {
 .card-body {
     margin-top: 1.5rem;
     padding: 0 !important;
-    color: #fff !important;
 }
 
 .card-title,
@@ -565,7 +564,6 @@ main {
 
 .hero-text p {
     width: 65%;
-    color: #1f2937;
 }
 
 .hero-text h1 span {
