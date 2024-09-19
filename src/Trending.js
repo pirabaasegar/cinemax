@@ -12,35 +12,37 @@ function App() {
     const trendingData = await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=3d820eab8fd533d2fd7e1514e86292ea&page=${page}`);
     const trendingJson = await trendingData.json();
     setState(trendingJson.results);
-
+  
     const firstItem = trendingJson.results[0];
     const heroId = firstItem.id;
     const mediaType = firstItem.media_type === 'tv' ? 'tv' : 'movie';
+  
     const [heroDataResponse, creditsResponse, releaseDataResponse] = await Promise.all([
       fetch(`https://api.themoviedb.org/3/${mediaType}/${heroId}?api_key=3d820eab8fd533d2fd7e1514e86292ea`),
       fetch(`https://api.themoviedb.org/3/${mediaType}/${heroId}/credits?api_key=3d820eab8fd533d2fd7e1514e86292ea`),
       fetch(`https://api.themoviedb.org/3/${mediaType}/${heroId}/release_dates?api_key=3d820eab8fd533d2fd7e1514e86292ea`)
     ]);
-
+  
     const [heroDataJson, creditsJson, releaseDataJson] = await Promise.all([
       heroDataResponse.json(),
       creditsResponse.json(),
       releaseDataResponse.json()
     ]);
-
+  
     const director = creditsJson.crew.find(person => person.job === 'Director');
     const writer = creditsJson.crew.find(person => person.department === 'Writing');
     const certification = releaseDataJson.results && releaseDataJson.results.length > 0
       ? releaseDataJson.results.find(country => country.iso_3166_1 === 'US').release_dates[0].certification
       : '';
-
+  
     const enrichedHeroData = {
       ...heroDataJson,
       director: director ? director.name : '',
       writer: writer ? writer.name : '',
-      certification
+      certification,
+      media_type: mediaType
     };
-
+  
     setHeroData(enrichedHeroData);
   };
 
