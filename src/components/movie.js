@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 function MovieDetail() {
   const { id } = useParams();
@@ -55,7 +53,7 @@ function MovieDetail() {
               <div className="col content">
                 <h1>{movieDataJson.title || 'N/A'}</h1>
                 <ul className="genre" dangerouslySetInnerHTML={{ __html: genres || 'N/A' }}></ul><br />
-                <ul className="info">
+                                <ul className="info">
                   <li>{releaseYear}</li>
                   <li>{certification || 'N/A'}</li>
                   <li>{runtimeFormatted || 'N/A'}</li>
@@ -95,13 +93,7 @@ function MovieDetail() {
     fetchMovieDetails();
   }, [id]);
 
-  return (
-    <>
-      <Header />
-      <div id="movie-details">{movieDetails}</div>
-      <Footer />
-    </>
-  );
+  return <div id="movie-details">{movieDetails}</div>;
 }
 
-export default MovieDetailPage;
+export default MovieDetail;

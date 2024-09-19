@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 
 function TVShowDetail() {
   const { id } = useParams();
@@ -87,13 +85,7 @@ function TVShowDetail() {
     fetchShowDetails();
   }, [id]);
 
-  return (
-    <>
-      <Header />
-      <div id="show-details">{showDetails}</div>
-      <Footer />
-    </>
-  );
+  return <div id="show-details">{showDetails}</div>;
 }
 
-export default TVShowDetailPage;
+export default TVShowDetail;
