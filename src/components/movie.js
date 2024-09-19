@@ -45,7 +45,7 @@ function MovieDetail() {
           </div>
         ));
         setMovieDetails(
-          <div className='py-5'>
+          <div>
             <div className="row">
               <div className="col-auto p-0">
                 <img className="poster" src={`https://image.tmdb.org/t/p/w500${movieDataJson.poster_path}`} alt={movieDataJson.title} />
@@ -93,7 +93,7 @@ function MovieDetail() {
     fetchMovieDetails();
   }, [id]);
 
-  return <div className='container'><div id="movie-details">{movieDetails}</div></div>;
+  return <div className='container py-5'>{movieDetails}</div>;
 }
 
 export default MovieDetail;
