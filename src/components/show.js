@@ -85,7 +85,7 @@ function TVShowDetail() {
     fetchShowDetails();
   }, [id]);
 
-  return <div id="show-details">{showDetails}</div>;
+  return <div className='container'>{showDetails}</div>;
 }
 
 export default TVShowDetail;
