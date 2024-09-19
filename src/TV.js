@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from './components/header';
 import Footer from './components/footer';
 import Pagination from './components/pagination';
@@ -11,7 +12,7 @@ function App() {
     const [genre, setGenre] = useState([]);
     const [value, setValue] = useState([]);
     const genreURL = useGenre(value);
-    const [selectedTVShow, setSelectedTVShow] = useState(null);
+    const navigate = useNavigate();
 
     const fetchTrendingTVShows = async () => {
         const data = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=3d820eab8fd533d2fd7e1514e86292ea&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreURL}`);
@@ -24,7 +25,7 @@ function App() {
     }, [page, genreURL]);
 
     const handleTVShowClick = (id) => {
-        setSelectedTVShow(id);
+        navigate(`/tv/${id}`);
     };
 
     const formatDate = (dateString) => {

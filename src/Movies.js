@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from './components/header';
 import Footer from './components/footer';
 import Pagination from './components/pagination';
@@ -11,7 +12,7 @@ function App() {
     const [genre, setGenre] = useState([]);
     const [value, setValue] = useState([]);
     const genreURL = useGenre(value);
-    const [selectedMovie, setSelectedMovie] = useState(null);
+    const navigate = useNavigate();
 
     const fetchTrending = async () => {
         const data = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=3d820eab8fd533d2fd7e1514e86292ea&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreURL}`);
@@ -23,6 +24,10 @@ function App() {
         fetchTrending();
     }, [page, genreURL]);
 
+    const handleCardClick = (id) => {
+        navigate(`/movies/${id}`);
+    };
+
     const formatDate = (dateString) => {
         const options = { month: "short", day: "numeric", year: "numeric" };
         return new Date(dateString).toLocaleDateString("en-US", options);
@@ -32,10 +37,6 @@ function App() {
         if (voteAverage >= 8) return "green";
         if (voteAverage >= 6) return "orange";
         return "red";
-    };
-
-    const handleCardClick = (id) => {
-        setSelectedMovie(id);
     };
 
     return (
