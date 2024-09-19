@@ -1,8 +1,8 @@
 body {
     font-family: "Outfit", sans-serif !important;
     margin: 0;
-    background-color: #1a1a1a !important;
-    color: #fff !important;
+    background-color: #fff !important;
+    color: #1f2937 !important;
 }
 
 a {
@@ -159,7 +159,7 @@ main {
     font-size: 14px;
     width: 100%;
     background: none;
-    color: #fff;
+    color: #1f2937;
     margin-right: 10px;
 }
 
@@ -199,7 +199,7 @@ main {
     outline: 0;
     font-size: 14px;
     width: 100%;
-    color: #fff;
+    color: #1f2937;
     margin-right: 10px;
     background-color: #000;
 }
@@ -418,7 +418,7 @@ main {
 
 .row-title {
     margin-bottom: 1rem;
-    color: #fff;
+    color: #1f2937;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -445,7 +445,7 @@ main {
     line-height: 1.75rem;
     padding-bottom: 8px;
     text-align: center;
-    color: #fff;
+    color: #1f2937;
 }
 
 .page-title h2 {
@@ -554,7 +554,7 @@ main {
 }
 
 .hero-text h1 {
-    color: #fff;
+    color: #1f2937;
     line-height: 1.1;
 }
 
@@ -564,7 +564,7 @@ main {
 
 .hero-text p {
     width: 65%;
-    color: #fff;
+    color: #1f2937;
 }
 
 .hero-text h1 span {
