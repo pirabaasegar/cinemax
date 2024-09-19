@@ -22,7 +22,7 @@ root.render(
       <Route path="/movies" element={<Movies />} />         {/* Movies Route */}
       <Route path="/tv" element={<TV />} />                {/* TV Shows Route */}
       <Route path="/search" element={<Search />} />         {/* Search Route */}
-      <Route path="/movie/:movieSlug" element={<MovieDetail />} />  {/* Dynamic Movie Route */}
+      <Route path="/movie/:id" element={<MovieDetail />} />
     </Routes>
   </BrowserRouter>
 );
