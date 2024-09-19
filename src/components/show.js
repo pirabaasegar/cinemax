@@ -41,7 +41,7 @@ function TVShowDetail() {
           </div>
         ));
         setShowDetails(
-          <div className='py-5'>
+          <div className='container py-5'>
             <div className="row">
               <div className="col-auto p-0">
                 <img className="poster" src={`https://image.tmdb.org/t/p/w500${showDataJson.poster_path}`} alt={showDataJson.name} />
@@ -85,7 +85,7 @@ function TVShowDetail() {
     fetchShowDetails();
   }, [id]);
 
-  return <div className='container'>{showDetails}</div>;
+  return <div id="show-details">{showDetails}</div>;
 }
 
 export default TVShowDetail;
