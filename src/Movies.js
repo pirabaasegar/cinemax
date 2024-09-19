@@ -36,6 +36,8 @@ function App() {
         return "red";
     };
 
+    document.title = "Movies - Cinemax";
+
     return (
         <>
             <div className="container">

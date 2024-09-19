@@ -69,6 +69,8 @@ function App() {
     backgroundImage: heroData ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original/${heroData.backdrop_path})` : ''
   };
 
+  document.title = "Cinemax - Discover Movies and TV Shows all in one place!";
+
   return (
     <>
       {heroData && (
@@ -144,7 +146,6 @@ function App() {
                 </div>
               </div>
             );
-            document.title = "Cinemax - Discover Movies and TV Shows all in one place!";
           })}
           <Pagination page={page} setPage={setPage} />
         </div>

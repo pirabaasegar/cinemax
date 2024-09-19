@@ -41,6 +41,8 @@ const Search = () => {
         return 'red';
     };
 
+    document.title = "Search - Cinemax";
+
     return (
         <>
             <div className="container">
