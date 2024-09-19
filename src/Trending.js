@@ -56,9 +56,10 @@ function App() {
   }, [page]);
 
   // Handle clicking on a movie or show card
-  const handleCardClick = (id, title) => {
-    const movieSlug = title.toLowerCase().split(' ').join('-');
-    navigate(`/movie/${movieSlug}`);
+  const handleCardClick = (id, title, mediaType) => {
+    const slug = title.toLowerCase().split(' ').join('-');
+    const path = mediaType === 'tv' ? `/show/${slug}` : `/movie/${slug}`;
+    navigate(path);
   };
 
   // Format the date for display
@@ -140,11 +141,11 @@ function App() {
         {/* Movie and TV Show Cards */}
         <div className="row py-5 row-gap-4 row-gap-lg-5 justify-content-center justify-content-md-start">
           {state.map((Val) => {
-            const { name, title, poster_path, first_air_date, release_date, vote_average, id } = Val;
+            const { name, title, poster_path, first_air_date, release_date, vote_average, id, media_type } = Val;
             const roundedVoteAverage = Math.round(vote_average * 10) / 10;
             const formattedDate = first_air_date ? formatDate(first_air_date) : formatDate(release_date);
             return (
-              <div className="col-8 col-md-2" key={id} onClick={() => handleCardClick(id, title || name)}>
+              <div className="col-8 col-md-2" key={id} onClick={() => handleCardClick(id, title || name, media_type)}>
                 <div className="card">
                   <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} className="card-img-top" alt={title} draggable="false" />
                   <div className="card-body">
