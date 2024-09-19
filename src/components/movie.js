@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function MovieDetail() {
   const { id } = useParams();
@@ -93,7 +95,13 @@ function MovieDetail() {
     fetchMovieDetails();
   }, [id]);
 
-  return <div id="movie-details">{movieDetails}</div>;
+  return (
+    <>
+      <Header />
+      <div id="movie-details">{movieDetails}</div>
+      <Footer />
+    </>
+  );
 }
 
-export default MovieDetail;
+export default MovieDetailPage;
