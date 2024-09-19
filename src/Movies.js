@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from './components/header';
-import Footer from './components/footer';
 import Pagination from './components/pagination';
 import Genre, { useGenre } from './components/genre';
 
@@ -40,7 +38,6 @@ function App() {
 
     return (
         <>
-            <Header />
             <div className="container">
                 <div className="row py-5 row-gap-5 justify-content-center justify-content-md-start">
                     <Genre
@@ -78,7 +75,6 @@ function App() {
                     <Pagination page={page} setPage={setPage} />
                 </div>
             </div>
-            <Footer />
         </>
     );
 }

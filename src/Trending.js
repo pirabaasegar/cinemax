@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from './components/header';
-import Footer from './components/footer';
 import Pagination from './components/pagination';
 
 function App() {
@@ -71,7 +69,6 @@ function App() {
 
   return (
     <>
-      <Header />
       {heroData && (
         <div
           className="hero"
@@ -145,7 +142,6 @@ function App() {
           <Pagination page={page} setPage={setPage} />
         </div>
       </div>
-      <Footer />
     </>
   );
 }

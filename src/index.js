@@ -9,6 +9,8 @@ import TV from './TV';
 import Search from './Search';
 import MovieDetail from './components/movie';
 import TVShowDetail from './components/show';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -18,6 +20,7 @@ const root = createRoot(container);
 
 root.render(
   <BrowserRouter>
+    <Header /> {/* Add Header component */}
     <Routes>
       <Route path="/" element={<Trending />} />
       <Route path="/movies" element={<Movies />} />
@@ -26,5 +29,6 @@ root.render(
       <Route path="/movies/:id" element={<MovieDetail />} />
       <Route path="/tv/:id" element={<TVShowDetail />} />
     </Routes>
+    <Footer /> {/* Add Footer component */}
   </BrowserRouter>
 );
