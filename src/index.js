@@ -27,7 +27,7 @@ root.render(
       <Route path="/movies" element={<Movies />} />
       <Route path="/tv" element={<TV />} />
       <Route path="/search" element={<Search />} />
-      <Route path="/movies/:id" element={<MovieDetail />} />
+      <Route path="/movie/:id" element={<MovieDetail />} />
       <Route path="/tv/:id" element={<TVShowDetail />} />
     </Routes>
     <Footer />
