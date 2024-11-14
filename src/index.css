@@ -123,6 +123,7 @@ ol {
 .card {
     border: 0 !important;
     background-color: transparent !important;
+    cursor: pointer;
 }
 
 .card img {
@@ -139,6 +140,12 @@ ol {
 .card-text {
     font-size: 1rem !important;
     margin: 0 !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.card-title:hover {
+    color: #f5c518 !important;
+    transition: all 0.3s ease-in-out;
 }
 
 main {

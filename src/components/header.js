@@ -22,7 +22,7 @@ const Header = () => {
   return (
     <header className="header" id="header">
       <div className="container d-flex justify-content-between">
-        <NavLink to="/" className="navbar-brand">
+        <NavLink to="/?page=1" className="navbar-brand">
           <i className="bi bi-film" />
           &nbsp;&nbsp;Cinemax
         </NavLink>

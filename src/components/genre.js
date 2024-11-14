@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const useGenre = (value) => {
   if (value.length < 1) return "";
@@ -8,7 +9,9 @@ const useGenre = (value) => {
 };
 
 const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
-  const [selectedGenre, setSelectedGenre] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const fetchGenre = async () => {
     const data = await fetch(
@@ -20,14 +23,35 @@ const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
 
   useEffect(() => {
     fetchGenre();
-  }, []);
+
+    const searchParams = new URLSearchParams(location.search);
+    const genreFromUrl = searchParams.get("genre");
+    if (genreFromUrl) {
+      const matchedGenre = genre.find((g) => g.name.toLowerCase() === genreFromUrl.toLowerCase());
+      if (matchedGenre) {
+        setSelectedGenre(matchedGenre);
+        setValue([matchedGenre]);
+      }
+    }
+  }, [location.search, genre, setGenre, setValue]);
+
+  const updateUrl = (genreName) => {
+    const searchParams = new URLSearchParams(location.search);
+    if (genreName) {
+      searchParams.set("genre", genreName);
+    } else {
+      searchParams.delete("genre");
+    }
+    navigate(`${location.pathname}?${searchParams.toString()}`, { replace: true });
+  };
 
   const handleGenreChange = (e) => {
     const selectedValue = e.target.value;
     if (selectedValue === "") {
-      setSelectedGenre("");
+      setSelectedGenre(null);
       setValue([]);
       setPage(1);
+      updateUrl("");
     } else {
       const genreId = parseInt(selectedValue);
       const selectedGenre = genre.find((g) => g.id === genreId);
@@ -35,6 +59,7 @@ const Genre = ({ genre, setGenre, setPage, type, value, setValue }) => {
       if (selectedGenre) {
         setValue([selectedGenre]);
         setPage(1);
+        updateUrl(selectedGenre.name);
       }
     }
   };

@@ -36,7 +36,7 @@ function App() {
         return "red";
     };
 
-    document.title = "Movies - Cinemax";
+    document.title = "Movies — Cinemax";
 
     return (
         <>
