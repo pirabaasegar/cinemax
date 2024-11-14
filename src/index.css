@@ -270,6 +270,7 @@ main {
     justify-content: center;
     color: white;
     margin-top: 3rem;
+    padding-right: 0 !important;
 }
 
 .page {
