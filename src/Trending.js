@@ -77,10 +77,10 @@ function App() {
     <>
       {page === 1 && heroData && (
         <div
-          className="hero"
+          className="hero container"
           style={heroBackgroundStyle}
         >
-          <div className="hero-text aos-init aos-animate" data-aos="fade-up">
+          <div className="hero-text">
             <div className="row">
               <div className="col-auto d-flex align-items-center">
                 <img
