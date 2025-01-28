@@ -93,7 +93,7 @@ function MovieDetail() {
     fetchMovieDetails();
   }, [id]);
 
-  return <div id="movie-details">{movieDetails}</div>;
+  return <section id="movie-details">{movieDetails}</section>;
 }
 
 export default MovieDetail;

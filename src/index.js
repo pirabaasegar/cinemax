@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './index.css';
 
-import Trending from './Trending';
+import Home from './Home';
 import Movies from './Movies';
 import TV from './TV';
 import Search from './Search';
@@ -23,7 +23,7 @@ root.render(
   <BrowserRouter>
     <Header />
     <Routes>
-      <Route path="/" element={<Trending />} />
+      <Route path="/" element={<Home />} />
       <Route path="/movies" element={<Movies />} />
       <Route path="/tv" element={<TV />} />
       <Route path="/search" element={<Search />} />

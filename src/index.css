@@ -1,7 +1,7 @@
 body {
     font-family: "Outfit", sans-serif !important;
     margin: 0;
-    background-color: #1a1a1a !important;
+    background-color: #111 !important;
     color: #fff !important;
 }
 
@@ -31,10 +31,18 @@ ol {
 
 .header {
     padding: 15px 0;
+    position: fixed;
+    top: 15px;
     width: 100%;
-    margin-top: 35px;
-    transition: all 0.3s ease-in-out;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
 }
+
+.header.scrolled {
+    background-color: #111;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    top: 0;
+  }
 
 .header .logo {
     font-size: 28px;
@@ -57,7 +65,7 @@ ol {
 .navbar-brand {
     font-size: 25px !important;
     font-weight: 500;
-    padding-right: 2.5rem;
+    padding-right: 3rem;
 }
 
 .navbar-brand i {
@@ -86,7 +94,7 @@ ol {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 2rem;
+    padding-right: 2rem;
     color: #000;
     transition: all 0.3s ease-in-out;
 }
@@ -127,18 +135,18 @@ ol {
 }
 
 .card img {
-    border-radius: 8px;
+    border-radius: 20px;
 }
 
 .card-body {
-    margin-top: 1.5rem;
+    margin-top: 16px;
     padding: 0 !important;
     color: #fff !important;
 }
 
 .card-title,
 .card-text {
-    font-size: 1rem !important;
+    font-size: 16px;
     margin: 0 !important;
     transition: all 0.3s ease-in-out;
 }
@@ -156,6 +164,7 @@ main {
     flex-grow: 1;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
 }
 
 .search-container input {
@@ -164,10 +173,14 @@ main {
     border: 2px solid #f5c516;
     outline: 0;
     font-size: 14px;
-    width: 100%;
+    width: 70%;
     background: none;
     color: #fff;
     margin-right: 10px;
+}
+
+.search-container input::placeholder {
+    color: #fff;
 }
 
 .search-container i {
@@ -221,6 +234,7 @@ main {
 
 .card-text {
     color: #7e7e7e !important;
+    font-size: 13px !important;
 }
 
 .card-container {
@@ -288,32 +302,6 @@ main {
     border: 5px solid #f5c518;
     font-size: 20px;
     font-weight: 600;
-}
-
-.rating {
-    height: 35px;
-    width: 35px;
-    border: 2px solid rgb(255, 193, 7);
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    position: absolute;
-    background-color: #1a1a1a;
-    margin-top: -45px;
-}
-
-.card-body div.green {
-	border-color: #198754;
-}
-
-.card-body div.yellow {
-	border-color: #f5c516;
-}
-
-.card-body div.red {
-	border-color: #dc3545;
 }
 
 .poster {
@@ -402,22 +390,6 @@ main {
 .card {
     border: 0 !important;
     background-color: transparent !important;
-}
-
-.card img {
-    border-radius: 8px;
-}
-
-.card-body {
-    margin-top: 1.5rem;
-    padding: 0 !important;
-    color: #fff !important;
-}
-
-.card-title,
-.card-text {
-    font-size: 1rem !important;
-    margin: 0 !important;
 }
 
 main {
@@ -536,34 +508,27 @@ main {
 }
 
 #movie-details .content,
-#show-details .content,
-.hero-text .content {
+#show-details .content {
     padding-left: 3rem;
 }
 
 .hero {
-    margin: 25px 75px;
     position: relative;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 425px;
-    margin-top: 35px;
+    height: 650px;
     display: flex;
-    border-radius: 1.5rem;
 }
 
 .hero-text {
-    padding: 0 5rem 0 2.5rem;
-    overflow: hidden;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .hero-text h1 {
-    color: #fff;
     line-height: 1.1;
+    font-size: xxx-large;
 }
 
 .hero-text img {
@@ -572,11 +537,6 @@ main {
 
 .hero-text p {
     width: 65%;
-    color: #fff;
-}
-
-.hero-text h1 span {
-    color: #acacac;
 }
 
 .footer {
@@ -706,4 +666,12 @@ main {
         margin: auto;
         width: 220.98px !important;
     }
+}
+
+section {
+    padding: 50px 0;
+}
+
+.brand-color {
+    color: #f5c516;
 }
