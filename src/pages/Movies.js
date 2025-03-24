@@ -51,26 +51,27 @@ function App() {
                         setValue={setValue}
                     />
                     {state.map((Val) => {
-                        const {
-                            title,
-                            poster_path,
-                            release_date,
-                            vote_average,
-                            id,
-                        } = Val;
+                        const { id, title, poster_path, release_date, vote_average } = Val;
                         const roundedVoteAverage = Math.round(vote_average * 10) / 10;
                         const ratingColor = getColor(vote_average);
                         const formattedDate = formatDate(release_date);
                         return (
-                            <div className="col-8 col-md-2" key={id} onClick={() => handleCardClick(id)}>
+                            <div className="col-6 col-md-2" key={id} onClick={() => handleCardClick(id)}>
                                 <div className="card">
-                                    <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} className="card-img-top" alt={title} draggable="false" />
-                                    <div className="card-body">
-                                        <div className={`rating ${ratingColor}`}>{roundedVoteAverage}</div>
-                                        <h5 className="card-title">{title}</h5>
-                                        <p className="card-text">{formattedDate}</p>
-                                    </div>
-                                </div>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                    className="card-img-top"
+                    alt={title}
+                    draggable="false"
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">{title}</h5>
+                    <p className="card-text">
+                      {formatDate(release_date)} | <i className="bi bi-star-fill me-1 text-warning"></i>
+                      {vote_average.toFixed(1)}
+                    </p>
+                  </div>
+                </div>
                             </div>
                         );
                     })}
