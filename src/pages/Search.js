@@ -47,37 +47,27 @@ const Search = () => {
                 {content.length > 0 && (
                     <div className="row py-5 row-gap-5 justify-content-center justify-content-md-start">
                         {content.map((item) => {
-                            const {
-                                name,
-                                title,
-                                poster_path,
-                                first_air_date,
-                                release_date,
-                                vote_average,
-                                id,
-                            } = item;
-                            const roundedVoteAverage = Math.round(vote_average * 10) / 10;
-                            const ratingColor = getColor(vote_average);
+                            const { id, name, title, poster_path, release_date, first_air_date, vote_average } = item;
                             const formattedDate = first_air_date
                                 ? formatDate(first_air_date)
                                 : formatDate(release_date);
                             return (
-                                <div className="col-8 col-md-2" key={id}>
+                                <div className="col-6 col-md-2" key={id}>
                                     <div className="card">
                                         <a href={`/${item.media_type}/${id}`}>
-                                            <img
-                                                src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                                                className="card-img-top"
-                                                alt={title}
-                                                draggable="false"
-                                            />
+                                        <img
+                                            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                                            className="card-img-top"
+                                            alt={title}
+                                            draggable="false"
+                                        />
                                         </a>
                                         <div className="card-body">
-                                            <div className={`rating ${ratingColor}`}>{roundedVoteAverage}</div>
-                                            <h5 className="card-title">
-                                                <a href={`/${item.media_type}/${id}`}>{title || name}</a>
-                                            </h5>
-                                            <p className="card-text">{formattedDate}</p>
+                                            <h5 className="card-title">{title || name}</h5>
+                                            <p className="card-text">
+                                                {formattedDate} | <i className="bi bi-star-fill me-1 text-warning"></i>
+                                                {vote_average.toFixed(1)}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
