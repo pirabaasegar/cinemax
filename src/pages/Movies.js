@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Pagination from '../components/Pagination';
+import Pagination from '../components/pagination';
 import Genre, { useGenre } from '../components/genre';
 
 function App() {
