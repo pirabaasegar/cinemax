@@ -45,7 +45,7 @@ const Search = () => {
             <div className="container">
                 {content.length === 0 && <p className='results'>No results found.</p>}
                 {content.length > 0 && (
-                    <div className="row py-5 row-gap-5 justify-content-center justify-content-md-start">
+                    <div className="row py-5 row-gap-5 justify-content-center justify-content-md-start mt-5">
                         {content.map((item) => {
                             const { id, name, title, poster_path, release_date, first_air_date, vote_average } = item;
                             const formattedDate = first_air_date
