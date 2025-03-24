@@ -4,10 +4,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './index.css';
 
-import Home from './Home';
-import Movies from './Movies';
-import TV from './TV';
-import Search from './Search';
+import Home from './pages/Home';
+import Movies from './pages/Movies';
+import TV from './pages/TV';
+import Search from './pages/Search';
 import MovieDetail from './components/movie';
 import TVShowDetail from './components/show';
 import Header from './components/header';
