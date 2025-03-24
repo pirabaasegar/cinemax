@@ -60,11 +60,11 @@ const Header = () => {
                   TV Shows
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/kids" activeclassname="active">
-                  Kids
-                </NavLink>
-              </li>
+              {/*<li>
+              <NavLink to="/kids" activeclassname="active">
+                Kids
+              </NavLink>
+            </li>*/}
             </ul>
             <i className="bi bi-search mobile-search-toggle" />
             <i
@@ -120,11 +120,11 @@ const Header = () => {
                 TV Shows
               </NavLink>
             </li>
-            <li>
+            {/*<li>
               <NavLink to="/kids" className="">
                 Kids
               </NavLink>
-            </li>
+            </li>*/}
           </ul>
         </nav>
       </div>

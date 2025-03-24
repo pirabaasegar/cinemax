@@ -41,7 +41,7 @@ function App() {
     return (
         <>
             <div className="container">
-                <div className="row py-5 row-gap-5 justify-content-center justify-content-md-start">
+                <div className="row py-5 row-gap-5 justify-content-center justify-content-md-start mt-5">
                     <Genre
                         genre={genre}
                         setGenre={setGenre}
