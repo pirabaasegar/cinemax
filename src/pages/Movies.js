@@ -58,20 +58,20 @@ function App() {
                         return (
                             <div className="col-6 col-md-2" key={id} onClick={() => handleCardClick(id)}>
                                 <div className="card">
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                    className="card-img-top"
-                    alt={title}
-                    draggable="false"
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{title}</h5>
-                    <p className="card-text">
-                      {formatDate(release_date)} | <i className="bi bi-star-fill me-1 text-warning"></i>
-                      {vote_average.toFixed(1)}
-                    </p>
-                  </div>
-                </div>
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                                        className="card-img-top"
+                                        alt={title}
+                                        draggable="false"
+                                    />
+                                    <div className="card-body">
+                                        <h5 className="card-title">{title}</h5>
+                                        <p className="card-text">
+                                            {formatDate(release_date)} | <i className="bi bi-star-fill me-1 text-warning"></i>
+                                            {vote_average.toFixed(1)}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         );
                     })}

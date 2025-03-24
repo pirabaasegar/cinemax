@@ -51,24 +51,29 @@ function App() {
                         setValue={setValue}
                     />
                     {state.map((tvShow) => {
-                        const {
-                            name,
-                            poster_path,
-                            first_air_date,
-                            vote_average,
-                            id,
-                        } = tvShow;
+                        const { id, name, poster_path, first_air_date, vote_average } = tvShow;
                         const roundedVoteAverage = Math.round(vote_average * 10) / 10;
                         const ratingColor = getColor(vote_average);
                         const formattedDate = formatDate(first_air_date);
                         return (
-                            <div className="col-8 col-md-2" key={id} onClick={() => handleTVShowClick(id)}>
+                            <div
+                                className="col-6 col-md-2"
+                                key={id}
+                                onClick={() => handleCardClick(id, "tv")}
+                            >
                                 <div className="card">
-                                    <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} className="card-img-top" alt={name} draggable="false" />
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                                        className="card-img-top"
+                                        alt={name}
+                                        draggable="false"
+                                    />
                                     <div className="card-body">
-                                        <div className={`rating ${ratingColor}`}>{roundedVoteAverage}</div>
                                         <h5 className="card-title">{name}</h5>
-                                        <p className="card-text">{formattedDate}</p>
+                                        <p className="card-text">
+                                            {formatDate(first_air_date)} | <i className="bi bi-star-fill me-1 text-warning"></i>
+                                            {vote_average.toFixed(1)}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
