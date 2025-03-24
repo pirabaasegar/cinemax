@@ -56,11 +56,7 @@ function App() {
                         const ratingColor = getColor(vote_average);
                         const formattedDate = formatDate(first_air_date);
                         return (
-                            <div
-                                className="col-6 col-md-2"
-                                key={id}
-                                onClick={() => handleCardClick(id, "tv")}
-                            >
+                            <div className="col-6 col-md-2" key={id} onClick={() => handleTVShowClick(id)}>
                                 <div className="card">
                                     <img
                                         src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
