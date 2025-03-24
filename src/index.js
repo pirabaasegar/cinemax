@@ -16,10 +16,7 @@ import Footer from './components/footer';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-const container = document.getElementById('root');
-const root = createRoot(container);
-
-root.render(
+createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Header />
     <Routes>
