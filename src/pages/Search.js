@@ -1,6 +1,6 @@
-import Header from './components/header';
-import Footer from './components/footer';
-import Pagination from './components/pagination';
+import Header from '../components/header';
+import Footer from '../components/footer';
+import Pagination from '../components/Pagination';
 
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
